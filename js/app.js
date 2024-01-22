@@ -1,48 +1,37 @@
-import {app} from "./firebase"
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-apiKey: "AIzaSyBJv-QyeXXPW1eak3_J1H0gKvD-Fws1NGU",
-authDomain: "login-9e1c9.firebaseapp.com",
-projectId: "login-9e1c9",
-storageBucket: "login-9e1c9.appspot.com",
-messagingSenderId: "567143214740",
-appId: "1:567143214740:web:ef042462a8a2ad5cb24e81",
-measurementId: "G-MEYNYZ4934"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-
-const form = document.forms['formlogin'];
-form.addEventListener('submit', handleForSubmit);
 
 
-function handleForSubmit(event){
-  event.preventDefault();
-  const email = form['correo'].value;
-  const password = form['password'].value;
+// Importar el módulo de autenticación de Firebase
+const auth = firebase.auth();
 
-  return loginUser(email, password);
-}
+// Función para iniciar sesión
+function loginUser() {
+  var email = document.getElementById("correo").value;
+  var password = document.getElementById("contrasena").value;
 
-function loginUser(email, password){
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Usuario autenticado
-      console.log('credenciales correctas', userCredential);
+  console.log(`correo: ${email}, contraseña: ${password}`);
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then((success) => {
+      console.log("Inicio de sesión exitoso");
     })
     .catch((error) => {
-      // Error en autenticación
-      console.error('CREDENCIALES INCORRECTAS', error);
+      console.error("Error al iniciar sesión", error.message);
     });
 }
 
+// Función para cerrar sesión
+function logoutUser() {
+  firebase.auth().signOut()
+    .then(() => {
+      // Se cerró sesión exitosamente
+      alert('Cerrar sesión')
+      console.log("Cierre de sesión exitoso");
+      window.location.replace("/login.html");
+    })
+    .catch((error) => {
+      // Si hay un error, manejarlo adecuadamente
+      console.error("Error al cerrar sesión", error.message);
+      // Puedes mostrar un mensaje de error al usuario aquí
+    });
+}
 
