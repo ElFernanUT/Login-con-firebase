@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registrarse</title>
+    <style>
+      body {
+  background-color: #f8f9fa;
+}
+
+.register-container {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.button{
+  button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+}
+.img{
+  display: block;
+      margin: auto;
+}
+    </style>
+    <button class="close-button" onclick="closeRegister()">Cerrar</button>
+</head>
+<body>
+  <h1>Bienvenido a tu Logeo exitoso</h1>
+  <p id="userEmail">Cargando datos del usuario...</p>
+  <img class="img" src="chipi-chipi-cat.gif" alt="GIF animado">
+        
+        
+    
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+
+    <script>
+        var firebaseConfig = {
+          apiKey: "AIzaSyBJv-QyeXXPW1eak3_J1H0gKvD-Fws1NGU",
+            authDomain: "login-9e1c9.firebaseapp.com",
+            projectId: "login-9e1c9",
+            storageBucket: "login-9e1c9.appspot.com",
+            messagingSenderId: "567143214740",
+            appId: "1:567143214740:web:ef042462a8a2ad5cb24e81",
+            measurementId: "G-MEYNYZ4934"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        function closeRegister() {
+            firebase.auth().signOut()
+                .then(() => {
+                    // Se cerró sesión exitosamente
+                    alert('Cerrar sesión')
+                    console.log("Cierre de sesión exitoso");
+                    window.location.replace("/index.html");
+                })
+                .catch((error) => {
+                    // Si hay un error, manejarlo adecuadamente
+                    console.error("Error al cerrar sesión", error.message);
+                    // Puedes mostrar un mensaje de error al usuario aquí
+                });
+        }
+
+    </script>
+<script src="/js/registro.js"></script>
+</body>
+</html>
