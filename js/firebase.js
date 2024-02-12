@@ -3,13 +3,13 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth
 
 // Configuración de tu proyecto Firebase
 const firebaseConfig = {
-            apiKey: "AIzaSyBJv-QyeXXPW1eak3_J1H0gKvD-Fws1NGU",
-            authDomain: "login-9e1c9.firebaseapp.com",
-            projectId: "login-9e1c9",
-            storageBucket: "login-9e1c9.appspot.com",
-            messagingSenderId: "567143214740",
-            appId: "1:567143214740:web:ef042462a8a2ad5cb24e81",
-            measurementId: "G-MEYNYZ4934"
+     apiKey: "AIzaSyCcs5hjZ2RZHNeszQYR05LmA9eqsvs1VBE",
+      authDomain: "web4-0-b2e16.firebaseapp.com",
+        databaseURL: "https://web4-0-b2e16-default-rtdb.firebaseio.com",
+         projectId: "web4-0-b2e16",
+        storageBucket: "web4-0-b2e16.appspot.com",
+        messagingSenderId: "339176202657",
+    appId: "1:339176202657:web:20461812f889117c50ebe0"
 };
 
 const app = initializeApp(firebaseConfig);

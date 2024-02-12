@@ -3,48 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Registrarse</title>
     <style>
-      body {
-  background-color: #f8f9fa;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eceff1;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
 
-.register-container {
-  max-width: 400px;
-  margin: auto;
-  margin-top: 100px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.button{
-  button[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-}
-.img{
-  display: block;
-      margin: auto;
-}
+        .register-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1976d2;
+            margin-bottom: 24px;
+        }
+
+        p {
+            margin-bottom: 36px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 24px;
+        }
+
+        .close-button {
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .close-button:hover {
+            background-color: #1565c0;
+        }
     </style>
-    <button class="close-button" onclick="closeRegister()">Cerrar</button>
 </head>
 <body>
-  <h1>Bienvenido a tu Logeo exitoso</h1>
-  <p id="userEmail">Cargando datos del usuario...</p>
-  <img class="img" src="chipi-chipi-cat.gif" alt="GIF animado">
-        
-        
-    
+    <div class="register-container">
+        <h1>Bienvenido a tu Logeo exitoso</h1>
+        <p id="userEmail">Cargando datos del usuario...</p>
+        <img src="cat_dance.gif" alt="GIF animado de un gato bailando">
+        <button class="close-button" onclick="closeRegister()">Cerrar Sesión</button>
+    </div>
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
@@ -52,7 +72,7 @@
 
     <script>
         var firebaseConfig = {
-          apiKey: "AIzaSyBJv-QyeXXPW1eak3_J1H0gKvD-Fws1NGU",
+            apiKey: "AIzaSyBJv-QyeXXPW1eak3_J1H0gKvD-Fws1NGU",
             authDomain: "login-9e1c9.firebaseapp.com",
             projectId: "login-9e1c9",
             storageBucket: "login-9e1c9.appspot.com",
@@ -67,19 +87,14 @@
         function closeRegister() {
             firebase.auth().signOut()
                 .then(() => {
-                    // Se cerró sesión exitosamente
-                    alert('Cerrar sesión')
+                    alert('Cerrar sesión');
                     console.log("Cierre de sesión exitoso");
                     window.location.replace("/index.html");
                 })
                 .catch((error) => {
-                    // Si hay un error, manejarlo adecuadamente
                     console.error("Error al cerrar sesión", error.message);
-                    // Puedes mostrar un mensaje de error al usuario aquí
                 });
         }
-
     </script>
-<script src="/js/registro.js"></script>
 </body>
 </html>
